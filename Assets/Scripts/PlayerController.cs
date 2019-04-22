@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerController : MonoBehaviour {
 
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour {
         if (isGrounded == true) {
             extraJumps = extraJumpsValue;
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0  )
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
