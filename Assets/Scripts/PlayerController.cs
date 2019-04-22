@@ -35,25 +35,31 @@ public class PlayerController : MonoBehaviour {
 
         isGrounded = Physics2D.OverlapCircle(checkGround.position, checkRadius, whatIsGround);
 
-        moveInput = Input.GetAxisRaw("Horizontal");
+        moveInput = Input.GetAxisRaw("Horizontal") + CrossPlatformInputManager.GetAxisRaw("Horizontal"); ;
+        //moveInput = CrossPlatformInputManager.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-    
-    if(facingRight == false && moveInput > 0 )
-    {
-            Flip();
-    }
-    else if (facingRight == true && moveInput < 0) 
+
+        if (facingRight == false && moveInput > 0)
         {
             Flip();
         }
-    
+        else if (facingRight == true && moveInput < 0)
+        {
+            Flip();
+        }
+
     }
     void Update()
     {
         if (isGrounded == true) {
             extraJumps = extraJumpsValue;
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0  )
+        if ((Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0) || ((CrossPlatformInputManager.GetButtonDown("Jump") && extraJumps > 0)))
+        {
+            rb.velocity = Vector2.up * jumpForce;
+            extraJumps--;
+        }
+        if (((Input.GetButtonDown("Jump") && extraJumps > 0)))
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
