@@ -9,9 +9,14 @@ public class PlayerHealth : MonoBehaviour {
     private float healthPoints = 100;
     private float maxHealthPoints = 100;
 
+    private Rigidbody2D rb;
+    //public float knockbackDuration;
+    //public float knockbackAmount;
+
     // Use this for initialization
     private void Start() {
         UpdateHealth();
+        rb = GetComponent<Rigidbody2D>();
     }
     private void UpdateHealth()
     {
@@ -59,4 +64,16 @@ public class PlayerHealth : MonoBehaviour {
     void Update () {
 		
 	}
+    public IEnumerator Knockback(float knockbackDuration, float knockbackAmount, Vector3 knockbackPosition)
+    {
+        float timer = 0;
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        while (knockbackDuration > timer)
+        {
+            timer += Time.deltaTime;
+
+            rb.AddForce(new Vector3(knockbackPosition.x * -400 * transform.localScale.x, knockbackPosition.y + knockbackAmount, transform.position.z));
+        }
+        yield return 0;
+    }
 }

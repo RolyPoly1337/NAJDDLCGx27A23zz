@@ -12,24 +12,34 @@ public class Enemy : MonoBehaviour {
     private GameObject instance;
     private PlayerHealth player;
     public int dmgOfEnemy;
+    private EnemyFollowing enemy;
 
+    public float knockbackDuration;
+    public float knockbackAmount;
+    public bool Dazed = false;
+    //private EnemyFollowing spd;
 
     // Use this for initialization
     void Start () {
        // ParticleSystem ps = GetComponent<ParticleSystem>();
        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+      //  spd = gameObject.GetComponent<EnemyFollowing>() as EnemyFollowing;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+       // spd.speed = speed;
         if (dazedTime <= 0)
         {
             speed = 5;
+            Dazed = false;
         }
         else
         {
+           // GetComponent<Enemy>();
             speed = 0;
+            Dazed = true;
             dazedTime -= Time.deltaTime;
         }
         if (health <= 0)
@@ -60,8 +70,12 @@ public class Enemy : MonoBehaviour {
     {
         if (collision.CompareTag("Player"))
         {
+
             player.PlayerTakesDamage(dmgOfEnemy);
+
+            StartCoroutine(player.Knockback(knockbackDuration, knockbackAmount, player.transform.position));
         }
     }
+
 
 }

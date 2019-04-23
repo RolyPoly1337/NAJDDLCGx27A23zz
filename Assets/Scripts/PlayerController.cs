@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour {
 
     private bool facingRight = true;
 
+    private float knockbackDuration;
+    private float knockbackAmount;
+
     void Start()
     {
         extraJumps = extraJumpsValue;
@@ -85,5 +88,16 @@ public class PlayerController : MonoBehaviour {
         Scaler.x *= -1;
         transform.localScale = Scaler;
     }
-	
+    public IEnumerator Knockback (float knockbackDuration, float knockbackAmount, Vector3 knockbackPosition)
+    {
+        float timer = 0;
+        while (knockbackDuration > timer)
+        {
+            timer += Time.deltaTime;
+
+            rb.AddForce(new Vector3(knockbackPosition.x * -100, knockbackPosition.y, transform.position.z));
+        }
+       yield return 0;
+    }
+
 }
