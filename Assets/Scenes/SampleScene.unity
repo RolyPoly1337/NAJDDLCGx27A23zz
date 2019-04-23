@@ -952,6 +952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  stopDistance: 2.2
 --- !u!1 &672517957 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1402427123436236, guid: 39ad842ab8bede04987a3d9ea3095f1f,
