@@ -10,10 +10,14 @@ public class Enemy : MonoBehaviour {
     public float speed;
     public GameObject powPrefab;
     private GameObject instance;
+    private PlayerHealth player;
+    public int dmgOfEnemy;
+
 
     // Use this for initialization
     void Start () {
        // ParticleSystem ps = GetComponent<ParticleSystem>();
+       player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 	
 	// Update is called once per frame
@@ -52,4 +56,12 @@ public class Enemy : MonoBehaviour {
         Debug.Log("Player hits enemy");
         //Instantiate(powPrefab, transform.position,transform.rotation);
     }
+     void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            player.PlayerTakesDamage(dmgOfEnemy);
+        }
+    }
+
 }
