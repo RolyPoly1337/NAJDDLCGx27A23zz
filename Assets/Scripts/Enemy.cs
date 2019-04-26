@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour {
     private PlayerHealth player;
     public int dmgOfEnemy;
     private EnemyFollowing enemy;
+    private GameObject instanceTwo;
+    public GameObject dropItem;
 
     public float knockbackDuration;
     public float knockbackAmount;
@@ -21,7 +23,7 @@ public class Enemy : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-       // ParticleSystem ps = GetComponent<ParticleSystem>();
+       ParticleSystem ps = GetComponent<ParticleSystem>();
        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
       //  spd = gameObject.GetComponent<EnemyFollowing>() as EnemyFollowing;
     }
@@ -45,6 +47,8 @@ public class Enemy : MonoBehaviour {
         if (health <= 0)
         {
             instance = Instantiate(powPrefab, transform.position, transform.rotation) as GameObject;
+            //instanceTwo = Instantiate(dropItem, transform.position, transform.rotation);
+
             //DestroyImmediate(powPrefab, true);
             //Destroy(this.gameObject);
             //Destroy(gameObject);

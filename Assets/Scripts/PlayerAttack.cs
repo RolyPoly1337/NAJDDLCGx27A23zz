@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerAttack : MonoBehaviour {
 
@@ -24,7 +25,7 @@ public class PlayerAttack : MonoBehaviour {
 	void Update () {
         if (atkCooldown <= 0)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F) || CrossPlatformInputManager.GetButtonDown ("Fire1"))
             {
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(atkPos.position,atkRange,placeEnemyLayer);
                 for (int i = 0; i < enemiesToDamage.Length; i++)

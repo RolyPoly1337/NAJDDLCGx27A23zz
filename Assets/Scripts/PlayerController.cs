@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour {
 
     private bool facingRight = true;
 
-    private float knockbackDuration;
-    private float knockbackAmount;
+   // private float knockbackDuration;
+    //private float knockbackAmount;
 
     void Start()
     {
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour {
         Scaler.x *= -1;
         transform.localScale = Scaler;
     }
-    public IEnumerator Knockback (float knockbackDuration, float knockbackAmount, Vector3 knockbackPosition)
+    /*public IEnumerator Knockback (float knockbackDuration, float knockbackAmount, Vector3 knockbackPosition)
     {
         float timer = 0;
         while (knockbackDuration > timer)
@@ -99,5 +99,6 @@ public class PlayerController : MonoBehaviour {
         }
        yield return 0;
     }
+    */
 
 }
