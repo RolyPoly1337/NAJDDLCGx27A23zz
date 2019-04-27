@@ -6,9 +6,10 @@ public class Blip : MonoBehaviour {
 
     public Transform Target;
     //private Transform player;
-    MiniMap map;
-    RectTransform myRectTransform;
-
+    public MiniMap map;
+    public RectTransform myRectTransform;
+    public float SegmentOffset;
+    //public Vector2 newPosition;
 
     public bool KeepWithinBoundary = true;
 
@@ -27,7 +28,12 @@ public class Blip : MonoBehaviour {
     // Update is called once per frame
     void LateUpdate()
     {
-        Vector2 newPosition = Target.position;
+        //Vector3 offset = map.TransformPosition(Target.position,new Vector3(SegmentOffset, SegmentOffset, 0));
+        //transform.position = map.TransformPosition(Target.position, new Vector3(SegmentOffset, SegmentOffset, 0));
+        // Vector2 newPosition = Target.position + offset;
+        //Vector2 newPosition =  offset;
+        Vector2 newPosition = map.TransformPosition(Target.position, new Vector3(SegmentOffset, SegmentOffset, 0));
+        //Vector2 newPosition = Target.position;
         // Vector2 newPosition = camera.worldtoscrreen.TransformPosition(Target.position);
         // camera.worldtoscreenpoint
         if (KeepWithinBoundary) 
