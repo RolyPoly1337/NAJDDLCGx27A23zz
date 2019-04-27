@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
 
 
     private Rigidbody2D rb;
-    public SpriteRenderer sr;
+   // public SpriteRenderer sr;
     private bool isGrounded;
 
     public Transform checkGround;
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
     {
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
+        //sr = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
