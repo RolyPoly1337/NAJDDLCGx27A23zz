@@ -8,9 +8,16 @@ public class Blip : MonoBehaviour {
     //private Transform player;
     MiniMap map;
     RectTransform myRectTransform;
+
+
+    public bool KeepWithinBoundary = true;
+
+
+
 	// Use this for initialization
 	void Start () {
         map = GetComponentInParent<MiniMap>();
+     
         myRectTransform = GetComponent<RectTransform>();
        //omponent().anchoredPosition;
         //   player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -23,6 +30,9 @@ public class Blip : MonoBehaviour {
         Vector2 newPosition = Target.position;
         // Vector2 newPosition = camera.worldtoscrreen.TransformPosition(Target.position);
         // camera.worldtoscreenpoint
+        if (KeepWithinBoundary) 
+            newPosition = map.MoveInside(newPosition);
+            
          myRectTransform.localPosition = newPosition;
     }
     }

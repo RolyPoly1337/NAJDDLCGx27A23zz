@@ -6,12 +6,17 @@ public class MiniMap : MonoBehaviour
 {
     public Transform Target;
     public Vector3 thePosition;
+    public float ZoomAmount = 1000000f;
+
+
     //private Transform player;
     //public Canvas Canvas;
     //Vector3 offset = Vector3.zero;
     //public Camera cam;
     //ivate float offx = 435.1f;
     //ivate float offy = 243.3f;
+
+
     void Start()
     {
      //   thePosition = transform.TransformPoint(0,0,0);
@@ -24,10 +29,18 @@ public class MiniMap : MonoBehaviour
     {
         //Vector3 screenPos = cam.WorldToScreenPoint(Target.position);
        // Debug.Log("target is " + screenPos.x + " pixels from the left");
-
+       
         Vector3 offset = position - Target.position ;
         Debug.Log(offset);
         Vector2 newPosition = new Vector2(-offset.x, -offset.y);
+        newPosition *= ZoomAmount;
         return newPosition;
+    }
+    public Vector2 MoveInside(Vector2 point)
+    {
+        Rect mapRect = GetComponent<RectTransform>().rect;
+        point = Vector2.Max(point, mapRect.min);
+        point = Vector2.Min(point, mapRect.max);
+        return point;
     }
 }  
