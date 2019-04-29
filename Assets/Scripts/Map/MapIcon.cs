@@ -32,6 +32,7 @@ public class MapIcon : MonoBehaviour {
         //transform.position = map.TransformPosition(Target.position, new Vector3(SegmentOffset, SegmentOffset, 0));
         // Vector2 newPosition = Target.position + offset;
         //Vector2 newPosition =  offset;
+         
         Vector2 newPosition = map.TransformPosition(Target.position, new Vector3(SegmentOffset, SegmentOffset, 0));
         //Vector2 newPosition = Target.position;
         // Vector2 newPosition = camera.worldtoscrreen.TransformPosition(Target.position);
