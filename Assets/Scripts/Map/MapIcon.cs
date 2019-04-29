@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Blip : MonoBehaviour {
+public class MapIcon : MonoBehaviour {
 
     public Transform Target;
     //private Transform player;

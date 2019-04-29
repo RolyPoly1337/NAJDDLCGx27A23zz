@@ -39,7 +39,7 @@ public class MiniMap : MonoBehaviour
         else 
         
             offset = position - Target.position;
-            Debug.Log(offset);
+          //  Debug.Log(offset);
             Vector2 newPosition = new Vector2(offset.x, offset.y);
             newPosition *= ZoomAmount;
             return newPosition;
