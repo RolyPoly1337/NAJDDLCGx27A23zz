@@ -23,7 +23,22 @@ public class PlayerController : MonoBehaviour {
 
     private bool facingRight = true;
 
-   // private float knockbackDuration;
+    // BELOW IS WALLCHECK
+    private bool isTouchingWall;
+    //private bool isTouchingWallOne;
+    public float wallCheckDistance;
+    public Transform wallCheck;
+    public Transform wallCheckOne;
+    private bool isWallSlideActive;
+    public float wallSlideSpeed;
+
+    // public Vector2 wallBounceOffDirection;
+    // public Vector2 wallJumpDirection;
+    //public float wallBounceOffForce;
+    //public float wallJumpForce;
+    //private int facingDirection = 1;
+
+    // private float knockbackDuration;
     //private float knockbackAmount;
 
     void Start()
@@ -31,6 +46,9 @@ public class PlayerController : MonoBehaviour {
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
         //sr = GetComponent<SpriteRenderer>();
+        //wallBounceOffDirection.Normalize();
+        //wallJumpDirection.Normalize();
+
     }
 
     void FixedUpdate()
@@ -38,10 +56,21 @@ public class PlayerController : MonoBehaviour {
 
         isGrounded = Physics2D.OverlapCircle(checkGround.position, checkRadius, whatIsGround);
 
+        isTouchingWall = Physics2D.Raycast(wallCheck.position,transform.right, wallCheckDistance, whatIsGround);
+        //isTouchingWallOne = Physics2D.Raycast(wallCheckOne.position, transform.up, wallCheckDistance, whatIsGround);
+
         moveInput = Input.GetAxisRaw("Horizontal") + CrossPlatformInputManager.GetAxisRaw("Horizontal"); ;
+
         //moveInput = CrossPlatformInputManager.GetAxisRaw("Horizontal");
+
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
+        if  (isWallSlideActive) { 
+        if (rb.velocity.y < -wallSlideSpeed)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
+        }
+        }
         if (facingRight == false && moveInput > 0)
         {
             Flip();
@@ -54,39 +83,87 @@ public class PlayerController : MonoBehaviour {
     }
     void Update()
     {
-        if (isGrounded == true) {
+        CheckIfWallSlide();
+        if (isGrounded == true || isWallSlideActive)
+        {
             extraJumps = extraJumpsValue;
         }
-        if ((Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0) || ((CrossPlatformInputManager.GetButtonDown("Jump") && extraJumps > 0)))
+        if ((Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)|| ((CrossPlatformInputManager.GetButtonDown("Jump") && extraJumps > 0)))
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
         }
+       /* if ((Input.GetKeyUp(KeyCode.UpArrow) && extraJumps > 0) || ((CrossPlatformInputManager.GetButtonUp("Jump") && extraJumps > 0)))
+        {
+            rb.velocity = Vector2.up * 0.5f;
+            extraJumps--;
+        }
+        */
         if (((Input.GetButtonDown("Jump") && extraJumps > 0)))
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && isGrounded == true)
+       
+        else if ((Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && isGrounded == true) )
         {
             rb.velocity = Vector2.up * jumpForce;
-        }
-           /* if (moveInput > 0)
+       
+         }/*
+        else if (isWallSlideActive && moveInput == 0 && extraJumps > 0)
         {
-            sr.flipX = false;
+            isWallSlideActive = false;
+            extraJumps--;
+            Vector2 forceToAdd = new Vector2(wallBounceOffForce * wallBounceOffDirection.x * -facingDirection, wallBounceOffForce * wallBounceOffDirection.y);
+            rb.AddForce(forceToAdd, ForceMode2D.Impulse);
         }
-        else if (moveInput < 0)
+        else if ((isWallSlideActive || isTouchingWall) && moveInput != 0 && extraJumps > 0)
         {
-            sr.flipX = true;
-        }*/
+            isWallSlideActive = false;
+            extraJumps--;
+            Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x * moveInput, wallJumpForce * wallJumpDirection.y);
+            rb.AddForce(forceToAdd, ForceMode2D.Impulse);
+        }
+        */
+        //CheckIfWallSlide();
+        /* if (moveInput > 0)
+     {
+         sr.flipX = false;
+     }
+     else if (moveInput < 0)
+     {
+         sr.flipX = true;
+     }*/
     }
     void Flip()
     {
-
+       // facingDirection *= -1;
         facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+       // transform.Rotate(0.0f, 180f, 0.0f);
+    }
+
+     void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y, wallCheck.position.z));
+        // Gizmos.color = Color.red;
+        // Gizmos.DrawLine(wallCheckOne.position, new Vector3(wallCheckOne.position.x + wallCheckDistance, wallCheckOne.position.y, wallCheckOne.position.z));
+    }
+    private void CheckIfWallSlide()
+    {
+        if (isTouchingWall && !isGrounded && rb.velocity.y < 0)
+        {
+            isWallSlideActive = true;
+        }
+        else
+        {
+            isWallSlideActive = false;
+        }
+
+
     }
     /*public IEnumerator Knockback (float knockbackDuration, float knockbackAmount, Vector3 knockbackPosition)
     {
