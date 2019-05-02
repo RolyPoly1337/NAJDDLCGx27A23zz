@@ -32,8 +32,8 @@ public class PlayerController : MonoBehaviour {
     private bool isWallSlideActive;
     public float wallSlideSpeed;
 
-    // public Vector2 wallBounceOffDirection;
-    // public Vector2 wallJumpDirection;
+    //public Vector2 wallBounceOffDirection;
+    //public Vector2 wallJumpDirection;
     //public float wallBounceOffForce;
     //public float wallJumpForce;
     //private int facingDirection = 1;
@@ -46,8 +46,8 @@ public class PlayerController : MonoBehaviour {
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
         //sr = GetComponent<SpriteRenderer>();
-        //wallBounceOffDirection.Normalize();
-        //wallJumpDirection.Normalize();
+        // wallBounceOffDirection.Normalize();
+        // wallJumpDirection.Normalize();
 
     }
 
@@ -88,6 +88,21 @@ public class PlayerController : MonoBehaviour {
         {
             extraJumps = extraJumpsValue;
         }
+        /*else if (isWallSlideActive && moveInput == 0 && extraJumps > 0)
+        {
+            isWallSlideActive = false;
+            extraJumps--;
+            Vector2 forceToAdd = new Vector2(wallBounceOffForce * wallBounceOffDirection.x * -facingDirection, wallBounceOffForce * wallBounceOffDirection.y);
+            rb.AddForce(forceToAdd, ForceMode2D.Impulse);
+        }
+        else if ((isWallSlideActive || isTouchingWall) && moveInput != 0 && extraJumps > 0)
+        {
+            isWallSlideActive = false;
+            extraJumps--;
+            Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x * moveInput, wallJumpForce * wallJumpDirection.y);
+            rb.AddForce(forceToAdd, ForceMode2D.Impulse);
+        }
+        */
         if ((Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)|| ((CrossPlatformInputManager.GetButtonDown("Jump") && extraJumps > 0)))
         {
             rb.velocity = Vector2.up * jumpForce;
@@ -109,8 +124,8 @@ public class PlayerController : MonoBehaviour {
         {
             rb.velocity = Vector2.up * jumpForce;
        
-         }/*
-        else if (isWallSlideActive && moveInput == 0 && extraJumps > 0)
+         }
+        /*else if (isWallSlideActive && moveInput == 0 && extraJumps > 0)
         {
             isWallSlideActive = false;
             extraJumps--;
@@ -123,8 +138,8 @@ public class PlayerController : MonoBehaviour {
             extraJumps--;
             Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x * moveInput, wallJumpForce * wallJumpDirection.y);
             rb.AddForce(forceToAdd, ForceMode2D.Impulse);
-        }
-        */
+        }*/
+        
         //CheckIfWallSlide();
         /* if (moveInput > 0)
      {
@@ -137,7 +152,7 @@ public class PlayerController : MonoBehaviour {
     }
     void Flip()
     {
-       // facingDirection *= -1;
+        //facingDirection *= -1;
         facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;

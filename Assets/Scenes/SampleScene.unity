@@ -1653,6 +1653,7 @@ Transform:
   - {fileID: 402137676}
   - {fileID: 1439335265}
   - {fileID: 814975405}
+  - {fileID: 1032689957}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1928,7 +1929,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 561660415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0019999743, y: -2.83, z: 0}
+  m_LocalPosition: {x: -2.09, y: -2.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 461017846}
@@ -7127,7 +7128,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 814975404}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -17199,6 +17200,34 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e92b652a9c2f56647959bf46ca114a42, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1032689956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1032689957}
+  m_Layer: 0
+  m_Name: wallCheckOne
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1032689957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1032689956}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 461017846}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1059288402
 GameObject:
   m_ObjectHideFlags: 0
@@ -19413,8 +19442,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   extraJumpsValue: 2
-  wallCheckDistance: 0.3
+  wallCheckDistance: 0.4
   wallCheck: {fileID: 814975405}
+  wallCheckOne: {fileID: 1032689957}
+  wallSlideSpeed: 0.1
 --- !u!61 &1751568765
 BoxCollider2D:
   m_ObjectHideFlags: 0

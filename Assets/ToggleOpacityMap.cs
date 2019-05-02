@@ -8,14 +8,14 @@ public class ToggleOpacityMap : MonoBehaviour
     public bool Toggled = false;
     void Update()
     {
-        if ((Input.GetKey(KeyCode.M)))
+        if (Input.GetKeyDown(KeyCode.M) && Toggled == false)
         {
 
             UItoDisable.GetComponent<CanvasGroup>().alpha = 1;
             Toggled = true;
 
         }
-        else 
+        else if (Input.GetKeyDown(KeyCode.M) && Toggled == true) 
         {
             Toggled = false;
             UItoDisable.GetComponent<CanvasGroup>().alpha = 0;
