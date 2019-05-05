@@ -32,11 +32,11 @@ public class PlayerController : MonoBehaviour {
     private bool isWallSlideActive;
     public float wallSlideSpeed;
 
-    //public Vector2 wallBounceOffDirection;
-    //public Vector2 wallJumpDirection;
-    //public float wallBounceOffForce;
-    //public float wallJumpForce;
-    //private int facingDirection = 1;
+    public Vector2 wallBounceOffDirection;
+    public Vector2 wallJumpDirection;
+    public float wallBounceOffForce;
+    public float wallJumpForce;
+    private int facingDirection = 1;
 
     // private float knockbackDuration;
     //private float knockbackAmount;
@@ -46,8 +46,8 @@ public class PlayerController : MonoBehaviour {
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
         //sr = GetComponent<SpriteRenderer>();
-        // wallBounceOffDirection.Normalize();
-        // wallJumpDirection.Normalize();
+         wallBounceOffDirection.Normalize();
+         wallJumpDirection.Normalize();
 
     }
 
@@ -88,57 +88,49 @@ public class PlayerController : MonoBehaviour {
         {
             extraJumps = extraJumpsValue;
         }
-        /*else if (isWallSlideActive && moveInput == 0 && extraJumps > 0)
-        {
-            isWallSlideActive = false;
-            extraJumps--;
-            Vector2 forceToAdd = new Vector2(wallBounceOffForce * wallBounceOffDirection.x * -facingDirection, wallBounceOffForce * wallBounceOffDirection.y);
-            rb.AddForce(forceToAdd, ForceMode2D.Impulse);
-        }
-        else if ((isWallSlideActive || isTouchingWall) && moveInput != 0 && extraJumps > 0)
-        {
-            isWallSlideActive = false;
-            extraJumps--;
-            Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x * moveInput, wallJumpForce * wallJumpDirection.y);
-            rb.AddForce(forceToAdd, ForceMode2D.Impulse);
-        }
-        */
-        if ((Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)|| ((CrossPlatformInputManager.GetButtonDown("Jump") && extraJumps > 0)))
+     
+        if ((Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0) && !isWallSlideActive|| ((CrossPlatformInputManager.GetButtonDown("Jump") && extraJumps > 0)))
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
+            Debug.Log("1");
         }
-       /* if ((Input.GetKeyUp(KeyCode.UpArrow) && extraJumps > 0) || ((CrossPlatformInputManager.GetButtonUp("Jump") && extraJumps > 0)))
-        {
-            rb.velocity = Vector2.up * 0.5f;
-            extraJumps--;
-        }
-        */
+
         if (((Input.GetButtonDown("Jump") && extraJumps > 0)))
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
+            Debug.Log("2");
         }
-       
-        else if ((Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && isGrounded == true) )
+        else if ((Input.GetKeyDown(KeyCode.UpArrow) && extraJumps == 0 && isGrounded == true))
         {
             rb.velocity = Vector2.up * jumpForce;
-       
-         }
-        /*else if (isWallSlideActive && moveInput == 0 && extraJumps > 0)
-        {
-            isWallSlideActive = false;
-            extraJumps--;
-            Vector2 forceToAdd = new Vector2(wallBounceOffForce * wallBounceOffDirection.x * -facingDirection, wallBounceOffForce * wallBounceOffDirection.y);
-            rb.AddForce(forceToAdd, ForceMode2D.Impulse);
+            Debug.Log("3");
         }
-        else if ((isWallSlideActive || isTouchingWall) && moveInput != 0 && extraJumps > 0)
+        else if (isWallSlideActive && moveInput == 0 && extraJumps > 0 && (Input.GetKeyDown(KeyCode.UpArrow)))
         {
-            isWallSlideActive = false;
+           // isWallSlideActive = false;
             extraJumps--;
-            Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x * moveInput, wallJumpForce * wallJumpDirection.y);
-            rb.AddForce(forceToAdd, ForceMode2D.Impulse);
-        }*/
+            //Vector2 forceToAdd = new Vector2(wallBounceOffForce * wallBounceOffDirection.x * -facingDirection, wallBounceOffForce * wallBounceOffDirection.y);
+            // rb.AddForce(forceToAdd, ForceMode2D.Impulse);
+            // rb.velocity = new Vector2(0,0);
+            rb.AddForce(new Vector2(-5000f, 2f) * jumpForce, ForceMode2D.Impulse);
+         //   rb.velocity = Vector2.up  * jumpForce;
+           // rb.velocity = -Vector2.right * jumpForce;
+            Debug.Log("4");
+        }
+        else if ((isWallSlideActive || isTouchingWall) && moveInput != 0 && extraJumps > 0 && (Input.GetKeyDown(KeyCode.UpArrow)))
+        {
+            //isWallSlideActive = false;
+            extraJumps--;
+            //rb.velocity = new Vector2(0, 0);
+            // rb.velocity = Vector2.up *  jumpForce;
+            rb.AddForce(new Vector2(-5000f, 2f) * jumpForce, ForceMode2D.Impulse);
+            //rb.velocity = -transform.forward *  jumpForce;
+            //Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirection.x * moveInput, wallJumpForce * wallJumpDirection.y);
+            // rb.AddForce(forceToAdd, ForceMode2D.Impulse);
+            Debug.Log("5");
+        }
         
         //CheckIfWallSlide();
         /* if (moveInput > 0)
