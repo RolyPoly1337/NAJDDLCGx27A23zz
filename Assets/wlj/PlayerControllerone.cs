@@ -135,6 +135,40 @@ public class PlayerControllerone : MonoBehaviour {
 
     private void Jump()
     {
+        if (!isGrounded && isTouchingWall && !isWallSlideActive && movementInputDirection == 1 && facingDirection == 1 && canJump)
+        {
+            // canJump = false;
+            extraJumpsRemainder = 0;
+            isWallSlideActive = true;
+            extraJumpsRemainder = 0;
+            isWallSlideActive = false;
+            extraJumpsRemainder--;
+            movementInputDirection = -1;
+            Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirectionAdditionalForClimbing.x * movementInputDirection, wallJumpForce * wallJumpDirectionAdditionalForClimbing.y);
+            rb.AddForce(forceToAdd, ForceMode2D.Impulse);
+            movementInputDirection = -1;
+            movementInputDirection = -1;
+            movementInputDirection = -1;
+            Debug.Log("from");
+        }
+        else if (!isGrounded && isTouchingWall && !isWallSlideActive && movementInputDirection == -1 && facingDirection == -1 && canJump)
+        {
+            extraJumpsRemainder = 0;
+            isWallSlideActive = true;
+            extraJumpsRemainder = 0;
+            isWallSlideActive = false;
+            extraJumpsRemainder--;
+            movementInputDirection = 1;
+            Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirectionAdditionalForClimbing.x * movementInputDirection, wallJumpForce * wallJumpDirectionAdditionalForClimbing.y);
+            rb.AddForce(forceToAdd, ForceMode2D.Impulse);
+            movementInputDirection = 1;
+            movementInputDirection = 1;
+            movementInputDirection = 1;
+
+            Debug.Log("1a");
+            Debug.Log("4.5a");
+        }
+
         if (canJump && !isWallSlideActive)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
