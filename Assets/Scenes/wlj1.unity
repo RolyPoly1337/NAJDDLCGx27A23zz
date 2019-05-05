@@ -677,7 +677,7 @@ MonoBehaviour:
   wallSlideSpeed: 1
   movementForceInAir: 50
   airDragForceAmount: 0.95
-  wallBounceOffDirection: {x: 1, y: 0.5}
+  wallBounceOffDirection: {x: 0.3, y: 0.5}
   wallJumpDirection: {x: 1, y: 2}
   wallBounceOffForce: 10
   wallJumpForce: 20
