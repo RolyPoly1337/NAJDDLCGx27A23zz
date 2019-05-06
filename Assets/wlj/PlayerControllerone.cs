@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityStandardAssets.CrossPlatformInput;
 public class PlayerControllerone : MonoBehaviour {
 
     private float movementInputDirection;
@@ -98,13 +98,13 @@ public class PlayerControllerone : MonoBehaviour {
 
     private void CheckInput()
     {
-        movementInputDirection = Input.GetAxisRaw("Horizontal");
+        movementInputDirection = Input.GetAxisRaw("Horizontal") + CrossPlatformInputManager.GetAxisRaw("Horizontal"); 
 
-        if ((Input.GetKeyDown(KeyCode.UpArrow)))
+        if ((Input.GetKeyDown(KeyCode.UpArrow)||((CrossPlatformInputManager.GetButtonDown("Jump") ||(Input.GetButtonDown("Jump"))))))
         {
             Jump();
         }
-        if ((Input.GetKeyUp(KeyCode.UpArrow)))
+        if ((Input.GetKeyUp(KeyCode.UpArrow)||((CrossPlatformInputManager.GetButtonUp("Jump") || (Input.GetButtonUp("Jump"))))))
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * JumpHeightMultiplier);
         }
@@ -230,11 +230,7 @@ public class PlayerControllerone : MonoBehaviour {
 
     private void MovementController()
     {
-        if (Input.GetMouseButton(0))
-        {
-            movementInputDirection = 1;
-  
-        }
+        
        
     
 

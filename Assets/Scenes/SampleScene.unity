@@ -1862,7 +1862,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7983776, y: 3.626881, z: -20}
+  m_LocalPosition: {x: 1.797885, y: 3.626881, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1123391776}
@@ -12046,7 +12046,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 887020886}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -18213,6 +18213,10 @@ Prefab:
       value: 
       objectReference: {fileID: 1483834030503040, guid: fcc50dd8b8b74294c9f80a48cbc26c08,
         type: 2}
+    - target: {fileID: 4790506480132160, guid: 8e129b9da7b21454a959b07505a25a42, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 22.530458
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e129b9da7b21454a959b07505a25a42, type: 2}
   m_IsPrefabAsset: 0
@@ -19375,9 +19379,9 @@ GameObject:
   - component: {fileID: 1751568767}
   - component: {fileID: 1751568766}
   - component: {fileID: 1751568765}
-  - component: {fileID: 1751568764}
   - component: {fileID: 1751568763}
   - component: {fileID: 1751568762}
+  - component: {fileID: 1751568764}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -19425,27 +19429,33 @@ MonoBehaviour:
 --- !u!114 &1751568764
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114827036401701768, guid: 15dde73cb61ee064cb9ce563e6f1d976,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1751568761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce3595db9044a79438421a65d1cd6001, type: 3}
+  m_Script: {fileID: 11500000, guid: d0635edf1d4653946b5890515f7796bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpForce: 4
+  movementSpeed: 10
+  jumpForce: 16
   checkGround: {fileID: 561660416}
-  checkRadius: 0.32
+  checkRadius: 0.4
   whatIsGround:
     serializedVersion: 2
     m_Bits: 512
   extraJumpsValue: 2
-  wallCheckDistance: 0.4
+  JumpHeightMultiplier: 0.5
+  wallCheckDistance: 0.6
   wallCheck: {fileID: 814975405}
-  wallCheckOne: {fileID: 1032689957}
-  wallSlideSpeed: 0.1
+  wallSlideSpeed: 1
+  movementForceInAir: 50
+  airDragForceAmount: 0.95
+  wallBounceOffDirection: {x: 0.3, y: 0.5}
+  wallJumpDirection: {x: 1, y: 2}
+  wallBounceOffForce: 10
+  wallJumpForce: 20
+  wallJumpDirectionAdditionalForClimbing: {x: 0.3, y: 0.8944272}
 --- !u!61 &1751568765
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19487,7 +19497,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 4
   m_Material: {fileID: 6200000, guid: c12c894ac62ad714d9cc7c69c3c8bd3d, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
