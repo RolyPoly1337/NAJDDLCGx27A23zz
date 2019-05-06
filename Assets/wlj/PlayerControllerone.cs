@@ -188,7 +188,7 @@ public class PlayerControllerone : MonoBehaviour {
             // extraJumpsRemainder = 0;
             //isWallSlideActive = true;
             extraJumpsRemainder = 0;
-            isWallSlideActive = false;
+            //isWallSlideActive = false;
             extraJumpsRemainder--;
             movementInputDirection = -1;
             Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirectionAdditionalForClimbing.x * movementInputDirection, wallJumpForce *  wallJumpDirectionAdditionalForClimbing.y);
@@ -204,7 +204,7 @@ public class PlayerControllerone : MonoBehaviour {
             // extraJumpsRemainder = 0;
             //isWallSlideActive = true;
             extraJumpsRemainder = 0;
-            isWallSlideActive = false;
+            //isWallSlideActive = false;
             extraJumpsRemainder--;
             movementInputDirection = 1;
             Vector2 forceToAdd = new Vector2(wallJumpForce * wallJumpDirectionAdditionalForClimbing.x * movementInputDirection, wallJumpForce * wallJumpDirectionAdditionalForClimbing.y);
