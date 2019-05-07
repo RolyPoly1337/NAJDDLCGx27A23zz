@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterSelection : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class CharacterSelection : MonoBehaviour {
     private int index;
     public GameObject player1;
     public GameObject player2;
+   
     private void Start()
     {
         tagTeamList = new GameObject[transform.childCount];
@@ -29,11 +31,20 @@ public class CharacterSelection : MonoBehaviour {
     {
         // Toggle off current player
         tagTeamList[index].SetActive(false);
+
     
 
         index--;
         if (index < 0)
             index = tagTeamList.Length - 1;
+        if (index != 1)
+           // player2.transform.position = player1.transform.position;
+        player1.transform.position = player2.transform.position;
+        if (index != 0)
+          //  player1.transform.position = player2.transform.position;
+        player2.transform.position = player1.transform.position;
+
+
 
         // Toggle on new player
         tagTeamList[index].SetActive(true);
