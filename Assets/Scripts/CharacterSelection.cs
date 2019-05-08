@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class CharacterSelection : MonoBehaviour {
 
@@ -9,9 +10,13 @@ public class CharacterSelection : MonoBehaviour {
     private int index;
     public GameObject player1;
     public GameObject player2;
-   
+    //private CinemachineVirtualCamera vcam;
+   // public Transform tFollowTarget;
+    //public GameObject tPlayer;
+
     private void Start()
     {
+       // var vcam = GetComponent<CinemachineVirtualCamera>();
         tagTeamList = new GameObject[transform.childCount];
         // fill array
         for (int i = 0; i < transform.childCount; i++)
@@ -44,10 +49,13 @@ public class CharacterSelection : MonoBehaviour {
           //  player1.transform.position = player2.transform.position;
         player2.transform.position = player1.transform.position;
 
-
+      
 
         // Toggle on new player
         tagTeamList[index].SetActive(true);
-    
+
+       // tFollowTarget = tPlayer.transform;
+      //  vcam.Follow = tFollowTarget;
+
     }
 }
