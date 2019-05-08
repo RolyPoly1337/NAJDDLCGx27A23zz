@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour {
     private float comboTime;
 
     public Transform atkPos;
+    public Transform atkPos1;
     public float atkRange;
 
     public LayerMask placeEnemyLayer;
@@ -21,8 +22,14 @@ public class PlayerAttack : MonoBehaviour {
     public int defaultDamage;
     public int extraDmgAmount;
     public int extraDmg;
-	// Use this for initialization
-	void Start () {
+
+    public GameObject player1;
+    public GameObject player2;
+
+  //  private bool buttonAppears = false;
+   // public GameObject buttonContinue;
+    // Use this for initialization
+    void Start () {
        
 	}
 	
@@ -42,6 +49,8 @@ public class PlayerAttack : MonoBehaviour {
                 }
                 //comboTime = startComboTime;
                 extraDmgAmount++;
+
+              //  buttonContinue.SetActive(false);
             }
            // atkCooldown = startAtkCooldown;
         }
@@ -50,11 +59,17 @@ public class PlayerAttack : MonoBehaviour {
         {
             extraDmgAmount = 2;
             comboTime = 0;
+            
         }
         if (extraDmgAmount == 1)
         {
             damage = 10;
         }
+       /* if (buttonAppears == true)
+        {
+            buttonContinue.SetActive(false);
+        }
+        */
         if (extraDmgAmount == 2 )
         {
             damage = 15;

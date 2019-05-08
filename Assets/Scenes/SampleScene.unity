@@ -2110,6 +2110,21 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114496476282722726, guid: cd879de33bb35bc4bb372a0c6a28b828,
+        type: 2}
+      propertyPath: startComboTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114496476282722726, guid: cd879de33bb35bc4bb372a0c6a28b828,
+        type: 2}
+      propertyPath: defaultDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114986954695780620, guid: cd879de33bb35bc4bb372a0c6a28b828,
+        type: 2}
+      propertyPath: jumpForce
+      value: 17
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd879de33bb35bc4bb372a0c6a28b828, type: 2}
   m_IsPrefabAsset: 0
@@ -2276,6 +2291,16 @@ Prefab:
     - target: {fileID: 114496476282722726, guid: cd879de33bb35bc4bb372a0c6a28b828,
         type: 2}
       propertyPath: startComboTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114986954695780620, guid: cd879de33bb35bc4bb372a0c6a28b828,
+        type: 2}
+      propertyPath: jumpForce
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 114986954695780620, guid: cd879de33bb35bc4bb372a0c6a28b828,
+        type: 2}
+      propertyPath: extraJumpsValue
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7395,7 +7420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &847026522
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19656,6 +19681,36 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ff28a1c86b9e4442b40b429305195a1, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1724881677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1481896475640072, guid: cd879de33bb35bc4bb372a0c6a28b828,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1724881678}
+  m_Layer: 0
+  m_Name: AtkPos (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1724881678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4318616834367452, guid: cd879de33bb35bc4bb372a0c6a28b828,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1724881677}
+  m_LocalRotation: {x: -0, y: -0.000002797529, z: -0, w: 1}
+  m_LocalPosition: {x: 0.38, y: 1.2, z: 0.17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1294336028}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1730655064
 GameObject:
   m_ObjectHideFlags: 0
