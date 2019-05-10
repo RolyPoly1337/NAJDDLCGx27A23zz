@@ -20,9 +20,10 @@ public class EnemyFollowing : MonoBehaviour {
         if (Vector2.Distance(transform.position, whoIsBeingFollowed.position) > stopDistance){
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(whoIsBeingFollowed.position.x, transform.position.y, whoIsBeingFollowed.position.z), speed * Time.deltaTime);
             transform.position.Normalize();
-           // speed = daze.speed;
+            // speed = daze.speed;
+            checkPlayerAgain();
 
-        
+
         }
         if (daze.Dazed == true)
         {
@@ -32,6 +33,10 @@ public class EnemyFollowing : MonoBehaviour {
    
 
 
+    }
+    public void checkPlayerAgain()
+    {
+        whoIsBeingFollowed = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
 }

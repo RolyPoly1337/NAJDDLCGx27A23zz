@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour {
     {
         if (collision.CompareTag("Player"))
         {
-
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
             player.PlayerTakesDamage(dmgOfEnemy);
 
             StartCoroutine(player.Knockback(knockbackDuration, knockbackAmount, player.transform.position));
