@@ -309,7 +309,7 @@ public class PlayerControllerone : MonoBehaviour {
         Gizmos.DrawWireSphere(checkGround.position, checkRadius);
         Gizmos.DrawLine(wallCheck.position, new Vector3(wallCheck.position.x + wallCheckDistance, wallCheck.position.y, wallCheck.position.z));
 
-    }
+    }//22
 }
 //1
 //3
