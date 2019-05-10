@@ -65,11 +65,7 @@ public class PlayerAttack : MonoBehaviour {
         {
             damage = 10;
         }
-       /* if (buttonAppears == true)
-        {
-            buttonContinue.SetActive(false);
-        }
-        */
+     
         if (extraDmgAmount == 2 )
         {
             damage = 15;
@@ -97,15 +93,74 @@ public class PlayerAttack : MonoBehaviour {
 
             comboTime -= Time.deltaTime;
         }
-       // else
+        if (atkCooldown <= 0)
+        {
+            if (Input.GetKeyDown(KeyCode.F) || CrossPlatformInputManager.GetButtonDown("Fire1"))
+            {
+                Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(atkPos1.position, atkRange, placeEnemyLayer);
+                for (int i = 0; i < enemiesToDamage.Length; i++)
+                {
+                    enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(damage);
+                    atkCooldown = startAtkCooldown;
+                    comboTime = startComboTime;
+
+                }
+                //comboTime = startComboTime;
+                extraDmgAmount++;
+
+                //  buttonContinue.SetActive(false);
+            }
+            // atkCooldown = startAtkCooldown;
+        }
+
+        if (extraDmgAmount >= 3)
+        {
+            extraDmgAmount = 2;
+            comboTime = 0;
+
+        }
+        if (extraDmgAmount == 1)
+        {
+            damage = 10;
+        }
+
+        if (extraDmgAmount == 2)
+        {
+            damage = 15;
+
+        }
+
+        if (extraDmgAmount == 0)
+        {
+            damage = defaultDamage;
+
+        }
+
+        if (comboTime <= 0)
+        {
+
+            Combo = false;
+            extraDmgAmount = 0;
+            comboTime = 0;
+        }
+        else
+        {
+            // GetComponent<Enemy>();
+
+            Combo = true;
+
+            comboTime -= Time.deltaTime;
+        }
+        // else
         //{
-           // atkCooldown -= Time.deltaTime;
+        // atkCooldown -= Time.deltaTime;
         //}
 
-	}
+    }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(atkPos.position, atkRange);
+        Gizmos.DrawWireSphere(atkPos1.position, atkRange);
     }
 }

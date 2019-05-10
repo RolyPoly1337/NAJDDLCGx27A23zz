@@ -8,11 +8,6 @@ public class PlayerHealth : MonoBehaviour {
     public Image currentHealth;
     public Image currentEnergy;
 
-    //public Image maxHealth;
-    //public int hitPoints;
-
-    // public int dmg;
-
     private Rigidbody2D rb;
     [SerializeField]
     private float healthPoints = 100;
@@ -22,6 +17,14 @@ public class PlayerHealth : MonoBehaviour {
     private float energyPoints = 100;
     [SerializeField]
     private float maxEnergyPoints = 100;
+
+    public int health;
+    public int numOfHeartBlocks;
+
+    public Image[] hearts;
+    public Sprite fullHeartBlock;
+    public Sprite emptyHeartBlock;
+
     //[SerializeField]
     //private float healthUpgrade = 100;
     //public float knockbackDuration;
@@ -29,35 +32,25 @@ public class PlayerHealth : MonoBehaviour {
 
     // Use this for initialization
     private void Start() {
-     // hitPoints =  healthPoints;
+    
         UpdateHealth();
         rb = GetComponent<Rigidbody2D>();
     }
     private void UpdateHealth()
     {
-        //hitPoints = healthPoints;
+      
         float ratio = healthPoints / maxHealthPoints;
-       // float ratio1 = healthPoints / (maxHealthPoints + healthUpgrade);
+    
 
         
         currentHealth.rectTransform.localScale = new Vector3(ratio, 1, 1);
         float ratio1 = energyPoints / maxEnergyPoints;
-        // float ratio1 = healthPoints / (maxHealthPoints + healthUpgrade);
+        
         currentEnergy.rectTransform.localScale = new Vector3(ratio1, 1, 1);
-        //maxHealth.rectTransform.localScale = new Vector3(ratio1, 1, 1);
-        // Debug.Log("Enemy hits player1234");
+    
 
     }
-    /*private void DamageTaken(float dmg)
-    {
-       // healthPoints -= dmg;
-            if (healthPoints < 0)
-        {
-            healthPoints = 0;
-        }
-        UpdateHealth();
-        Debug.Log("E33445");
-    }*/
+    
     
     public void HealDamageTaken(float heal)
     {
@@ -72,23 +65,19 @@ public class PlayerHealth : MonoBehaviour {
     
     public void PlayerTakesDamage(int dmg)
     {
-        //Debug.Log("Enemy hits player");
-        //dazedTime = startDazedTime;
         healthPoints -= dmg;
         if (healthPoints < 0)
         {
             healthPoints = 0;
         }
         UpdateHealth();
-        //playerHealth -= dmg;
         Debug.Log("Enemy hits player");
-        //Instantiate(powPrefab, transform.position,transform.rotation);
     }
 
 
     // Update is called once per frame
     void Update () {
-       // energyPoints += Time.deltaTime;
+
         if (Input.GetKeyDown(KeyCode.G) && energyPoints >= 50 || CrossPlatformInputManager.GetButtonDown("Fire2") && energyPoints >= 50)
         {
             energyPoints -= 100;
