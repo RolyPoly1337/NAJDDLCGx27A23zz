@@ -30,7 +30,13 @@ public class EnemyFollowing : MonoBehaviour {
            speed = 0;
 
         }
-   
+        if (daze.Dazed == false)
+        {
+            checkPlayerAgain();
+            speed = 0;
+
+        }
+
 
 
     }
