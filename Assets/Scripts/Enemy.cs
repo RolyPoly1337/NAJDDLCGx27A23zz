@@ -72,6 +72,7 @@ public class Enemy : MonoBehaviour {
     }
      void OnTriggerEnter2D(Collider2D collision)
     {
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
         if (collision.CompareTag("Player"))
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
