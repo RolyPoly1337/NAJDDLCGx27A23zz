@@ -98,7 +98,15 @@ public class PlayerControllerone : MonoBehaviour {
 
     private void CheckInput()
     {
-        movementInputDirection = Input.GetAxisRaw("Horizontal") + CrossPlatformInputManager.GetAxisRaw("Horizontal"); 
+        #if CROSS_PLATFORM_INPUT
+        movementInputDirection = Input.GetAxisRaw("Horizontal") + CrossPlatformInputManager.GetAxisRaw("Horizontal");
+#       else
+        movementInputDirection = Input.GetAxisRaw("Horizontal")
+        #endif
+        if (movementInputDirection > 0)
+            movementInputDirection = 1;
+        if (movementInputDirection < 0)
+            movementInputDirection = -1;
 
         if ((Input.GetKeyDown(KeyCode.UpArrow)||((CrossPlatformInputManager.GetButtonDown("Jump") ||(Input.GetButtonDown("Jump"))))))
         {
@@ -185,6 +193,9 @@ public class PlayerControllerone : MonoBehaviour {
         }
         else if ((isWallSlideActive || isTouchingWall) && movementInputDirection == 1 && facingDirection == 1 && canJump)
         {
+            isWallSlideActive = false;
+            extraJumpsRemainder--;
+
             // extraJumpsRemainder = 0;
             //isWallSlideActive = true;
             extraJumpsRemainder = 0;
@@ -201,6 +212,9 @@ public class PlayerControllerone : MonoBehaviour {
         }
         else if ((isWallSlideActive || isTouchingWall) && movementInputDirection == -1 && facingDirection == -1 && canJump)
         {
+            isWallSlideActive = false;
+            extraJumpsRemainder--;
+
             // extraJumpsRemainder = 0;
             //isWallSlideActive = true;
             extraJumpsRemainder = 0;
