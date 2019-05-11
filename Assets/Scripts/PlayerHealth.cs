@@ -30,6 +30,8 @@ public class PlayerHealth : MonoBehaviour {
     //public float knockbackDuration;
     //public float knockbackAmount;
 
+  
+
     // Use this for initialization
     private void Start() {
     
@@ -38,12 +40,33 @@ public class PlayerHealth : MonoBehaviour {
     }
     private void UpdateHealth()
     {
-      
-        float ratio = healthPoints / maxHealthPoints;
+        if (health > numOfHeartBlocks)
+        {
+            health = numOfHeartBlocks;
+        }
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < health)
+            {
+                hearts[i].sprite = fullHeartBlock;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeartBlock;
+            }
+            if (i < numOfHeartBlocks)
+            {
+                hearts[i].enabled = true;
+            } else
+            {
+                hearts[i].enabled = false;
+            }
+        }
+        //float ratio = healthPoints / maxHealthPoints;
     
 
         
-        currentHealth.rectTransform.localScale = new Vector3(ratio, 1, 1);
+        //currentHealth.rectTransform.localScale = new Vector3(ratio, 1, 1);
         float ratio1 = energyPoints / maxEnergyPoints;
         
         currentEnergy.rectTransform.localScale = new Vector3(ratio1, 1, 1);
@@ -65,10 +88,10 @@ public class PlayerHealth : MonoBehaviour {
     
     public void PlayerTakesDamage(int dmg)
     {
-        healthPoints -= dmg;
-        if (healthPoints < 0)
+        health -= dmg;
+        if (health < 0)
         {
-            healthPoints = 0;
+            health = 0;
         }
         UpdateHealth();
         Debug.Log("Enemy hits player");
