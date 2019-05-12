@@ -7,7 +7,7 @@ public class PlayerControllerone : MonoBehaviour {
     private float movementInputDirection;
 
     private Rigidbody2D rb;
-    private Animator anim;
+    public Animator anim;
     private bool isWalking;
     private bool isTouchingWall;
 

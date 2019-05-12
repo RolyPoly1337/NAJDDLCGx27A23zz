@@ -1888,7 +1888,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 462048092}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.46605325, y: 1.9175892, z: -12}
+  m_LocalPosition: {x: 0.46622038, y: 1.9175892, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1694966699}
@@ -2252,7 +2252,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.46605325, y: 1.9175892, z: -12}
+  m_LocalPosition: {x: 0.46622038, y: 1.9175892, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1123391776}
@@ -2852,7 +2852,7 @@ Prefab:
     - target: {fileID: 114007769799420142, guid: 0b4627dfdf8305c4aacbc05bbfb35cf7,
         type: 2}
       propertyPath: health
-      value: 100
+      value: 1000000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b4627dfdf8305c4aacbc05bbfb35cf7, type: 2}
@@ -18668,6 +18668,66 @@ Prefab:
       propertyPath: health
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 212758806692759496, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 2.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 212758806692759496, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 61740598833514946, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.46435425
+      objectReference: {fileID: 0}
+    - target: {fileID: 61740598833514946, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.46175814
+      objectReference: {fileID: 0}
+    - target: {fileID: 61740598833514946, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.4999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 61740598833514946, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.0099998
+      objectReference: {fileID: 0}
+    - target: {fileID: 61740598833514946, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 61740598833514946, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 2.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 212758806692759496, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
+        type: 2}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95409260066170106, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114130489795528216, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
+        type: 2}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 2138217962}
+    - target: {fileID: 114269590067026708, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
+        type: 2}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 2138217962}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28eb8870aa7fb92428de2bb6085eb5b4, type: 2}
   m_IsPrefabAsset: 0
@@ -21061,7 +21121,7 @@ Prefab:
     - target: {fileID: 114007769799420142, guid: 0b4627dfdf8305c4aacbc05bbfb35cf7,
         type: 2}
       propertyPath: health
-      value: 100
+      value: 1000000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b4627dfdf8305c4aacbc05bbfb35cf7, type: 2}
@@ -21293,7 +21353,7 @@ Prefab:
     - target: {fileID: 114007769799420142, guid: 0b4627dfdf8305c4aacbc05bbfb35cf7,
         type: 2}
       propertyPath: health
-      value: 100
+      value: 1000000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b4627dfdf8305c4aacbc05bbfb35cf7, type: 2}
@@ -22424,6 +22484,11 @@ Transform:
 --- !u!1 &2138217958 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1533416263292346, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1183149614}
+--- !u!95 &2138217962 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95409260066170106, guid: 28eb8870aa7fb92428de2bb6085eb5b4,
     type: 2}
   m_PrefabInternal: {fileID: 1183149614}
 --- !u!1001 &2139695863
